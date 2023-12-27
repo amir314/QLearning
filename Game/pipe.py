@@ -1,6 +1,6 @@
-import pygame as pg 
-
 import random
+
+import pygame as pg 
 
 from settings import ScreenSettings, PipeSettings
 

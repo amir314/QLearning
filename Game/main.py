@@ -1,3 +1,5 @@
+import random
+
 import pygame as pg
 
 from settings import ScreenSettings, PipeSettings, BirdSettings
@@ -5,8 +7,6 @@ from settings import ScreenSettings, PipeSettings, BirdSettings
 from bird import Bird
 from pipe import Pipe
 from ground import Ground
-
-import random
 
 class ScreenRender:
     def __init__(self):
