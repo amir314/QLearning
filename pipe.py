@@ -22,6 +22,8 @@ class Pipe(pg.Rect):
 
         self.color = PipeSettings.COLOR
 
+        self.top_bottom_gap = PipeSettings.TOP_BOTTOM_GAP
+
     def is_on_screen(self) -> bool:
         return self.is_alive() and self.left < ScreenSettings.WIDTH
     
@@ -32,7 +34,7 @@ class Pipe(pg.Rect):
         new_pipe = Pipe()
 
         new_pipe.left = self.left
-        new_pipe.top = self.height + PipeSettings.TOP_BOTTOM_GAP
+        new_pipe.top = self.height + self.top_bottom_gap
         new_pipe.height = ScreenSettings.HEIGHT - new_pipe.top
 
         new_pipe.upside_down = False

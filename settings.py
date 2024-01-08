@@ -9,8 +9,8 @@ class ScreenSettings:
 class BirdSettings:
     WIDTH, HEIGHT = 40, 40
     COLOR = pg.Color('brown4')
-    JUMP_HEIGHT = int(HEIGHT*1.2)
-    GRAVITY = 3
+    JUMP_HEIGHT = int(HEIGHT)
+    GRAVITY = 6
 
 class PipeSettings:
     WIDTH, HEIGHT = 50, 160
