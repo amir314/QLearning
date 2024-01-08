@@ -23,7 +23,7 @@ class Agent():
         self.num_games = 0
         self.gamma = GAMMA
         self.memory = deque(maxlen=MAX_MEMORY)
-        self.model = Linear(STATE_LEN, 4*STATE_LEN, 2)
+        self.model = Linear(STATE_LEN, 20*STATE_LEN, 2)
         self.trainer = QTrainer(self.model, lr=LR, gamma=self.gamma)
 
     def get_action(self, state):
@@ -57,8 +57,6 @@ class Agent():
         self.memory.append((state, action, reward, new_state, done))
 
     def train(self, game):
-        plot_scores = []
-        plot_mean_scores = []
         self.total_score = 0
         self.best_score = 0
         

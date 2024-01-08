@@ -133,14 +133,21 @@ class GameScreenRender:
     def get_nearest_pipe(self):
         for i in range(len(self.pipes)):
             pipe = self.pipes[i]
-            if pipe.left > self.bird.right:
+            if not pipe.cleared:
                 return pipe
 
     def get_bird_pipe_alignment(self):
         nearest_pipe = self.get_nearest_pipe()
         bird_center_y = self.bird.center[1]
         nearest_pipe_center_y = nearest_pipe.bottom + nearest_pipe.top_bottom_gap//2
-        return abs(bird_center_y - nearest_pipe_center_y)
+        
+        alignment = bird_center_y - nearest_pipe_center_y
+
+        # Punish being above the pipe center more than being below.
+        if bird_center_y - nearest_pipe_center_y < 0:
+            alignment *= 1.2
+
+        return abs(alignment)
 
     def frame_step(self, action=None):
         if action:
@@ -161,7 +168,7 @@ class GameScreenRender:
         #self.survival_time += 1
         alignment = self.get_bird_pipe_alignment()
 
-        reward = self.score*10 + 10*math.pow((ScreenSettings.HEIGHT//2-alignment)/(ScreenSettings.HEIGHT//2),3)
+        reward = 10*math.pow((ScreenSettings.HEIGHT//2-alignment)/(ScreenSettings.HEIGHT//2),3)
 
         return reward, 1-self.bird.is_alive(), self.score
 

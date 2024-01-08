@@ -1,6 +1,6 @@
 import pygame as pg
 
-SPEED_FACTOR = 1.5
+SPEED_FACTOR = 1
 
 class ScreenSettings:
     WIDTH, HEIGHT = 800, 600
