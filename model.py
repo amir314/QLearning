@@ -23,8 +23,8 @@ class Linear(nn.Module):
         if not os.path.exists(folder_path):
             os.makedirs(folder_path)
         
-        file_name = os.path.join(folder_path, file_name)
-        torch.save(self.state_dict())
+        file_path = os.path.join(folder_path, file_name)
+        torch.save(self.state_dict(), f=file_path)
 
 
 class QTrainer:
