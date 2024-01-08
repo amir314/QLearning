@@ -1,16 +1,18 @@
 import pygame as pg
 
+SPEED_FACTOR = 1.5
+
 class ScreenSettings:
     WIDTH, HEIGHT = 800, 600
-    FPS = 30
+    FPS = 30*SPEED_FACTOR
     CAPTION = 'BirdGame'
     COLOR = pg.Color('darkslategray')
 
 class BirdSettings:
     WIDTH, HEIGHT = 40, 40
     COLOR = pg.Color('brown4')
-    JUMP_HEIGHT = int(HEIGHT)
-    GRAVITY = 6
+    JUMP_HEIGHT = int(HEIGHT)*SPEED_FACTOR
+    GRAVITY = 4*SPEED_FACTOR
 
 class PipeSettings:
     WIDTH, HEIGHT = 50, 160
@@ -21,7 +23,7 @@ class PipeSettings:
     LEFT_RIGHT_GAP = WIDTH*4
     TOP = 0
     LEFT = int(ScreenSettings.WIDTH)
-    SPEED = 2
+    SPEED = 2*SPEED_FACTOR
 
 class GroundSettings:
     COLOR = pg.Color('burlywood4')
